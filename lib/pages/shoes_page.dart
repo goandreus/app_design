@@ -1,4 +1,4 @@
-import 'package:app_design/widgets/custom_appbar.dart';
+import 'package:app_design/widgets/custom_widgets.dart';
 import 'package:flutter/material.dart';
 
 class ShoesPage extends StatelessWidget {
@@ -7,7 +7,14 @@ class ShoesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     body: CustomAppBar(texto: 'For you',),
+      body: Column(
+        children: <Widget>[
+          CustomAppBar(texto: 'For You  ',),
+          SizedBox(height: 20,),
+          ShoesSize(),  
+        ]
+      )
+     //body: CustomAppBar(texto: 'For you',),
     );
   }
 }
