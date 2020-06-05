@@ -17,8 +17,63 @@ class ShoesSize extends StatelessWidget {
         child: Column(
           children: <Widget>[
             _ShoesShadow(),
+            _ShoesSize()
           ]
         ),
+      ),
+    );
+  }
+}
+
+class _ShoesSize extends StatelessWidget {
+  const _ShoesSize({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding:  EdgeInsets.symmetric(horizontal: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          _SizeShoesWhite( number: 7, ),
+          _SizeShoesWhite( number: 7.5, ), 
+          _SizeShoesWhite( number: 8, ), 
+          _SizeShoesWhite( number: 8.5, ), 
+          _SizeShoesWhite( number: 9, ), 
+          _SizeShoesWhite( number: 9.5, ),  
+        ],
+      ),
+    );
+  }
+}
+
+class _SizeShoesWhite extends StatelessWidget {
+
+  final double number;
+  
+
+  const _SizeShoesWhite({
+    Key key, this.number,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      child: Text('${number.toString().replaceAll('.0', '' )}', 
+      style: TextStyle(
+        color: Colors.red,
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+      ),),
+      width: 45,
+      height: 45,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+        //TODO:  BoxShadow
+        ]
       ),
     );
   }
