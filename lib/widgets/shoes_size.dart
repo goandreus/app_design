@@ -62,17 +62,22 @@ class _SizeShoesWhite extends StatelessWidget {
       alignment: Alignment.center,
       child: Text('${number.toString().replaceAll('.0', '' )}', 
       style: TextStyle(
-        color: Colors.red,
+        color: (this.number == 9) ? Colors.white : Colors.orange,
         fontSize: 16,
         fontWeight: FontWeight.bold,
       ),),
       width: 45,
       height: 45,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: (this.number == 9) ? Colors.orange : Colors.white,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
-        //TODO:  BoxShadow
+          if(this.number == 9)
+        BoxShadow(
+          color: Colors.orange,
+          blurRadius: 10,
+          offset: Offset(0,5)
+        )
         ]
       ),
     );
