@@ -19,11 +19,36 @@ class ShoesDescPage extends StatelessWidget {
                   description:
                       'The Nike Air Max 720 goes bigger than ever before with Nike s taller Air unit yet, offering more air underfoot for unimaginable, all-day comfort. Has Air Max gone too far? We hope so.',
                 ),
+               // AddCartButton(mount: 180.0,)
+               _MountBuyNow()
               ],
             ),
           ),
         )
       ]),
+    );
+  }
+}
+
+class _MountBuyNow extends StatelessWidget {
+  const _MountBuyNow({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal:30,),
+      child: Container( 
+        margin: EdgeInsets.only( top: 20),
+        child: Row(
+          children: <Widget>[
+            Text('\$180.0', style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),),
+            Spacer(), 
+            OrangeButton(text: 'Buy now', width: 100, height: 40,)  
+          ]
+        ),
+      ),
     );
   }
 }
