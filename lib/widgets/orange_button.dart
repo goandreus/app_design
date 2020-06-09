@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class OrangeButton extends StatelessWidget {
-  const OrangeButton({Key key,@required this.text, this.width = 150, this.height = 50}) : super(key: key);
+  const OrangeButton({Key key,@required this.text, this.width = 150, this.height = 50, this.color = Colors.orange}) : super(key: key);
 
+  final Color color;
   final double width;
   final double height;
   final String text;
@@ -15,7 +16,7 @@ class OrangeButton extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
-        color: Colors.orange,
+        color: this.color,
       ),
       child: Text('$text', style: TextStyle(color: Colors.white),),
     );
