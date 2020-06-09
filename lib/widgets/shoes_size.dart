@@ -1,25 +1,41 @@
 import 'package:flutter/material.dart';
 
 class ShoesSize extends StatelessWidget {
-  const ShoesSize({Key key}) : super(key: key);
+  const ShoesSize({Key key, this.fullScreen = false}) : super(key: key);
+
+  final bool fullScreen;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal:40, vertical: 10),
+      padding: EdgeInsets.symmetric(
+        horizontal: (this.fullScreen) ? 5 : 30,
+        vertical: (this.fullScreen) ? 5 : 0,
+
+        ),
       child: Container(
         width: double.infinity,
-        height: 420,
+        height: (this.fullScreen) ? 410 : 430,
         decoration: BoxDecoration(
           color: Color(0xffFFCF53),
-          borderRadius: BorderRadius.circular(50),
+          borderRadius: 
+          (! this.fullScreen)
+           ? BorderRadius.circular(50)
+           : BorderRadius.only(
+             bottomLeft: Radius.circular(50),
+             bottomRight: Radius.circular(50),
+             topLeft: Radius.circular(40),
+             topRight: Radius.circular(40),
+             ),
         ),
         child: Column(
-          children: <Widget>[
+          children: <Widget>
+          [
             _ShoesShadow(),
-            _ShoesSize()
-          ]
-        ),
+            if(!this.fullScreen)
+             _ShoesSize()
+          ],
+          ),
       ),
     );
   }
@@ -31,16 +47,28 @@ class _ShoesSize extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.symmetric(horizontal: 10),
+      padding: EdgeInsets.symmetric(horizontal: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          _SizeShoesWhite( number: 7, ),
-          _SizeShoesWhite( number: 7.5, ), 
-          _SizeShoesWhite( number: 8, ), 
-          _SizeShoesWhite( number: 8.5, ), 
-          _SizeShoesWhite( number: 9, ), 
-          _SizeShoesWhite( number: 9.5, ),  
+          _SizeShoesWhite(
+            number: 7,
+          ),
+          _SizeShoesWhite(
+            number: 7.5,
+          ),
+          _SizeShoesWhite(
+            number: 8,
+          ),
+          _SizeShoesWhite(
+            number: 8.5,
+          ),
+          _SizeShoesWhite(
+            number: 9,
+          ),
+          _SizeShoesWhite(
+            number: 9.5,
+          ),
         ],
       ),
     );
@@ -48,38 +76,35 @@ class _ShoesSize extends StatelessWidget {
 }
 
 class _SizeShoesWhite extends StatelessWidget {
-
   final double number;
-  
 
   const _SizeShoesWhite({
-    Key key, this.number,
+    Key key,
+    this.number,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      child: Text('${number.toString().replaceAll('.0', '' )}', 
-      style: TextStyle(
-        color: (this.number == 9) ? Colors.white : Colors.orange,
-        fontSize: 16,
-        fontWeight: FontWeight.bold,
-      ),),
+      child: Text(
+        '${number.toString().replaceAll('.0', '')}',
+        style: TextStyle(
+          color: (this.number == 9) ? Colors.white : Colors.orange,
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
       width: 45,
       height: 45,
       decoration: BoxDecoration(
-        color: (this.number == 9) ? Colors.orange : Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          if(this.number == 9)
-        BoxShadow(
-          color: Colors.orange,
-          blurRadius: 10,
-          offset: Offset(0,5)
-        )
-        ]
-      ),
+          color: (this.number == 9) ? Colors.orange : Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            if (this.number == 9)
+              BoxShadow(
+                  color: Colors.orange, blurRadius: 10, offset: Offset(0, 5))
+          ]),
     );
   }
 }
@@ -93,11 +118,10 @@ class _ShoesShadow extends StatelessWidget {
       padding: const EdgeInsets.all(50.0),
       child: Stack(
         children: <Widget>[
-          Positioned(
-            bottom: 20,
-            right: 0,
-            child: _Shoes()),
-          Image(image: AssetImage('assets/imgs/azul.png'),),
+          Positioned(bottom: 20, right: 0, child: _Shoes()),
+          Image(
+            image: AssetImage('assets/imgs/azul.png'),
+          ),
         ],
       ),
     );
@@ -117,11 +141,8 @@ class _Shoes extends StatelessWidget {
         width: 230,
         height: 120,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(100),
-          boxShadow: [
-            BoxShadow(color: Colors.orange[700], blurRadius: 40)
-          ]
-        ),
+            borderRadius: BorderRadius.circular(100),
+            boxShadow: [BoxShadow(color: Colors.orange[700], blurRadius: 40)]),
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:app_design/pages/shoes_desc_page.dart';
 import 'package:app_design/pages/shoes_page.dart';
 import 'package:flutter/material.dart';
  
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Design App',
       debugShowCheckedModeBanner: false,
-      home: ShoesPage(),
+      home: ShoesDescPage(),
     );
   }
 }
