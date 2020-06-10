@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Design App',
       debugShowCheckedModeBanner: false,
-      home: ShoesDescPage(),
+      home: ShoesPage(),
     );
   }
 }

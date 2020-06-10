@@ -9,13 +9,13 @@ class ShoesSize extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: (this.fullScreen) ? 5 : 30,
+        horizontal: (this.fullScreen) ? 5 : 40,
         vertical: (this.fullScreen) ? 5 : 0,
 
         ),
       child: Container(
         width: double.infinity,
-        height: (this.fullScreen) ? 410 : 430,
+        height: (this.fullScreen) ? 410 : 360,
         decoration: BoxDecoration(
           color: Color(0xffFFCF53),
           borderRadius: 
@@ -115,11 +115,12 @@ class _ShoesShadow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(50.0),
+      padding: const EdgeInsets.all(40.0),
       child: Stack(
         children: <Widget>[
-          Positioned(bottom: 20, right: 0, child: _Shoes()),
+          Positioned(bottom: 10, right: 0, child: _Shoes()),
           Image(
+            height: 200,
             image: AssetImage('assets/imgs/azul.png'),
           ),
         ],
@@ -138,8 +139,8 @@ class _Shoes extends StatelessWidget {
     return Transform.rotate(
       angle: -0.5,
       child: Container(
-        width: 230,
-        height: 120,
+        width: 180,
+        height: 80,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(100),
             boxShadow: [BoxShadow(color: Colors.orange[700], blurRadius: 40)]),

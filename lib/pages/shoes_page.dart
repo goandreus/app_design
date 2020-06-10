@@ -20,6 +20,9 @@ class ShoesPage extends StatelessWidget {
           child: Column(
             children: <Widget>[
               ShoesSize(),
+              SizedBox(
+                height: 20,
+              ),
               ShoesDescription(
                 title: 'Nike Air Max 720',
                 description:
