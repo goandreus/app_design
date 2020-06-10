@@ -1,5 +1,7 @@
+import 'package:app_design/models/shoes_model.dart';
 import 'package:app_design/pages/shoes_desc_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ShoesSize extends StatelessWidget {
   const ShoesSize({Key key, this.fullScreen = false}) : super(key: key);
@@ -86,6 +88,7 @@ class _ShoesSize extends StatelessWidget {
 class _SizeShoesWhite extends StatelessWidget {
   final double number;
 
+
   const _SizeShoesWhite({
     Key key,
     this.number,
@@ -93,26 +96,34 @@ class _SizeShoesWhite extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      child: Text(
-        '${number.toString().replaceAll('.0', '')}',
-        style: TextStyle(
-          color: (this.number == 9) ? Colors.white : Colors.orange,
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
+
+    final shoesModel = Provider.of<ShoesModel>(context);  
+    return GestureDetector(
+      onTap: (){
+        final shoesModel = Provider.of<ShoesModel>(context, listen: false);
+        shoesModel.size = this.number; 
+      },
+      child: Container(
+        alignment: Alignment.center,
+        child: Text(
+          '${number.toString().replaceAll('.0', '')}',
+          style: TextStyle(
+            color: (this.number == shoesModel.size) ? Colors.white : Colors.orange,
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
         ),
+        width: 45,
+        height: 45,
+        decoration: BoxDecoration(
+            color: (this.number == shoesModel.size) ? Colors.orange : Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              if (this.number == shoesModel.size)
+                BoxShadow(
+                    color: Colors.orange, blurRadius: 10, offset: Offset(0, 5))
+            ]),
       ),
-      width: 45,
-      height: 45,
-      decoration: BoxDecoration(
-          color: (this.number == 9) ? Colors.orange : Colors.white,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            if (this.number == 9)
-              BoxShadow(
-                  color: Colors.orange, blurRadius: 10, offset: Offset(0, 5))
-          ]),
     );
   }
 }
