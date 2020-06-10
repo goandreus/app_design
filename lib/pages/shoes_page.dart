@@ -19,7 +19,10 @@ class ShoesPage extends StatelessWidget {
           physics: BouncingScrollPhysics(),
           child: Column(
             children: <Widget>[
-              ShoesSize(),
+              Hero(
+                tag: 'shoes-1',
+                child: ShoesSize()
+                ),
               SizedBox(
                 height: 20,
               ),
