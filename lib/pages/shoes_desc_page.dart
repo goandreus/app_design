@@ -8,7 +8,20 @@ class ShoesDescPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(children: <Widget>[
-        ShoesSize(fullScreen: true),
+        Stack(children: <Widget>[
+          ShoesSize(fullScreen: true),
+          Positioned(
+            top: 80,
+            child: FloatingActionButton(
+              onPressed: (){},
+              child: Icon(Icons.chevron_left, color: Colors.white, size: 60,),
+              elevation: 0,
+              highlightElevation: 0,
+              backgroundColor: Colors.transparent,
+            ) 
+          ),
+          
+        ],),
         Expanded(
           child: SingleChildScrollView(
             child: Column(
@@ -23,12 +36,65 @@ class ShoesDescPage extends StatelessWidget {
                 ),
                 // AddCartButton(mount: 180.0,)
                 _MountBuyNow(),
-                _ColorsAdd()
+                _ColorsAdd(),
+                _ButtonLikeCartSettings()
               ],
             ),
           ),
         )
       ]),
+    );
+  }
+}
+
+class _ButtonLikeCartSettings extends StatelessWidget {
+  const _ButtonLikeCartSettings({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical:30),
+      padding: EdgeInsets.symmetric(horizontal:30),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          _ShadowButton(icon: Icon(Icons.star, color: Colors.red, size: 25,),),
+          _ShadowButton(icon: Icon(Icons.add_shopping_cart, color: Colors.grey.withOpacity(0.4), size: 25,),),
+          _ShadowButton(icon: Icon(Icons.settings, color: Colors.grey.withOpacity(0.4), size: 25,),),
+        ]
+      ),
+    );
+  }
+}
+
+class _ShadowButton extends StatelessWidget {
+
+  final Icon icon;
+  
+  const _ShadowButton({
+    Key key, @required this.icon,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: this.icon,
+      width: 45,
+      height: 45,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        shape: BoxShape.circle,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            spreadRadius: -5,
+            blurRadius: 20,
+            offset: Offset(0,1)
+          )
+        ]
+      ),
     );
   }
 }
@@ -55,7 +121,7 @@ class _ColorsAdd extends StatelessWidget {
                 ),
                Positioned(left:30,child: _ButtonColor(
                   color: Color(0xffFFAD29),)
-                ),
+                ), 
                 _ButtonColor(
                   color: Color(0xffC6D642),
                 ),
