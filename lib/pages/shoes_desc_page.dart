@@ -1,6 +1,8 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:app_design/models/shoes_model.dart';
 import 'package:app_design/widgets/custom_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ShoesDescPage extends StatelessWidget {
   const ShoesDescPage({Key key}) : super(key: key);
@@ -119,16 +121,16 @@ class _ColorsAdd extends StatelessWidget {
             child: Stack(
               children: <Widget>[
                Positioned(left:90,child: _ButtonColor(
-                  color: Color(0xff364D56), index: 4,)
+                  color: Color(0xff364D56), index: 4, urlImagen: 'assets/imgs/negro.png')
                 ),
                Positioned(left:60,child: _ButtonColor(
-                  color: Color(0xff2099F1), index: 3,)
+                  color: Color(0xff2099F1), index: 3, urlImagen: 'assets/imgs/azul.png')
                 ),
                Positioned(left:30,child: _ButtonColor(
-                  color: Color(0xffFFAD29),index: 2, )
+                  color: Color(0xffFFAD29),index: 2, urlImagen: 'assets/imgs/amarillo.png' )
                 ), 
                 _ButtonColor(
-                  color: Color(0xffC6D642), index: 1,
+                  color: Color(0xffC6D642), index: 1, urlImagen: 'assets/imgs/verde.png',
                 ),
               ],
             ),
@@ -149,10 +151,11 @@ class _ColorsAdd extends StatelessWidget {
 class _ButtonColor extends StatelessWidget {
   final Color color;
   final int index;
+  final String urlImagen;
   
   const _ButtonColor({
     Key key,
-    this.color, this.index,
+    this.color, this.index, this.urlImagen,
   }) : super(key: key);
 
   @override
@@ -160,10 +163,16 @@ class _ButtonColor extends StatelessWidget {
     return FadeInLeft(
       delay: Duration(milliseconds: this.index * 100),
       duration: Duration(milliseconds: 300),
-      child: Container(
-        width: 45,
-        height: 45,
-        decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+      child: GestureDetector(
+        onTap: (){
+          final shoesModel = Provider.of<ShoesModel>(context, listen: false);
+          shoesModel.assetImage = this.urlImagen;
+        },
+        child: Container(
+          width: 45,
+          height: 45,
+          decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+        ),
       ),
     );
   }

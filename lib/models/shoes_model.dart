@@ -5,7 +5,7 @@ class ShoesModel with ChangeNotifier{
   double _size = 9.0;
 
   String get assetImage => this._assetImage;
-  set assetIMage (String valor){
+  set assetImage (String valor){
     this._assetImage = valor;
     notifyListeners();
   }

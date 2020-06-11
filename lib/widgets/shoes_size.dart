@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ShoesSize extends StatelessWidget {
-  const ShoesSize({Key key, this.fullScreen = false}) : super(key: key);
+  const ShoesSize({Key key, this.fullScreen = false,}) : super(key: key);
 
   final bool fullScreen;
 
@@ -20,11 +20,10 @@ class ShoesSize extends StatelessWidget {
         padding: EdgeInsets.symmetric(
           horizontal: (this.fullScreen) ? 5 : 40,
           vertical: (this.fullScreen) ? 5 : 0,
-
           ),
         child: Container(
           width: double.infinity,
-          height: (this.fullScreen) ? 410 : 360,
+          height: (this.fullScreen) ? 380 : 360,
           decoration: BoxDecoration(
             color: Color(0xffFFCF53),
             borderRadius: 
@@ -129,10 +128,13 @@ class _SizeShoesWhite extends StatelessWidget {
 }
 
 class _ShoesShadow extends StatelessWidget {
-  const _ShoesShadow({Key key}) : super(key: key);
+
+  const _ShoesShadow({Key key,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
+    final shoesModel = Provider.of<ShoesModel>(context); 
     return Padding(
       padding: const EdgeInsets.all(40.0),
       child: Stack(
@@ -140,7 +142,7 @@ class _ShoesShadow extends StatelessWidget {
           Positioned(bottom: 10, right: 0, child: _Shoes()),
           Image(
             height: 200,
-            image: AssetImage('assets/imgs/azul.png'),
+            image: AssetImage(shoesModel.assetImage),
           ),
         ],
       ),
